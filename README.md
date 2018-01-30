@@ -7,3 +7,5 @@
   * Comma seperated
   * Fist value "NSSE" without quotes
   * Second value is the NSSE link ID
+  * example data:
+    * $USER->aim should return "NSSE,H123456789" without quotes

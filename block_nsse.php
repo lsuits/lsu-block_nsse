@@ -74,7 +74,9 @@ class block_nsse extends block_base {
         // TODO: make this a generic link/user profile tool, not just an NSSE one
         if (!empty($USER->profile['nsse'])) {
             $nsse_prefix = get_config('block_nsse', 'urlprefix');
+            $nsse_prefix = !empty($nsse_prefix) ? $nsse_prefix : get_string('urlprefixdefault', 'block_nsse');
             $nsse_suffix = get_config('block_nsse', 'urlsuffix');
+            $nsse_suffix = !empty($nsse_suffix) ? $nsse_suffix : get_string('urlsuffixdefault', 'block_nsse');
             $nsse_link_id = $USER->profile['nsse'];
             $nsse_link_text = get_string('linktitle', 'block_nsse');
 

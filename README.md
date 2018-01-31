@@ -1,11 +1,15 @@
 # LSU NSSE survey block
 ## NSSE survey block utilizing unused profile field
 ### Version 1
-* Utilizes the now defunct AIM profile field
+* Creates an NSSE profile field on install
+* Utilizes the new field to display a custom link
 * Data should be populated by other means
-* AIM field should be structured as so:
-  * Comma seperated
-  * Fist value "NSSE" without quotes
-  * Second value is the NSSE link ID
+* NSSE field should contain the 10 character NSSE login
   * example data:
-    * $USER->aim should return "NSSE,H123456789" without quotes
+    * $USER->profile['nsse'] should return something like "H123456789" without quotes
+* Link prefix is configurable
+  * Default is "https://nssesurvey.org/" without quotes
+  * Trailing slash is required
+* Link suffix is configurable
+  * Default is "/60" without quotes
+  * Leading slash is required

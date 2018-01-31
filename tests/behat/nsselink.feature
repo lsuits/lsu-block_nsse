@@ -6,9 +6,9 @@ Feature: Block nsse displaying nsse links
 
   Background:
     Given the following "users" exist:
-      | username | firstname | lastname | aim |
-      | teacher1 | Teacher | NSSE,H123456789 |
-      | student1 | Student | NSSE,H234567890 |
+      | username | firstname | lastname |
+      | teacher1 | Teacher | User |
+      | student1 | Student | User |
 
   Scenario: Add NSSE Survey Links block in my home
     When I log in as "teacher1"

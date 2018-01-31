@@ -15,17 +15,27 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details
+ * Provides a link based on an additional profile field to an NSSE survey
  *
  * @package    block_nsse
  * @copyright  2018 onwards Robert Russo, Louisiana State University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2018013100;        // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires  = 2016051900;        // Requires this Moodle version
-$plugin->release = "v1.1";
-$plugin->maturity = MATURITY_STABLE; 
-$plugin->component = 'block_nsse';      // Full name of the plugin (used for diagnostics)
+if ($ADMIN->fulltree) {
+    $nsse_url_prefix = get_string('urlprefix', 'block_nsse');
+    $nsse_url_prefix_desc = get_string('urlprefixdesc', 'block_nsse');
+    $nsse_default_prefix = 'https://nssesurvey.org/';
+
+    $settings->add(new admin_setting_configtext('block_nsse/urlprefix',
+        $nsse_url_prefix, $nsse_url_prefix_desc, $nsse_default_prefix));
+
+    $nsse_url_suffix = get_string('urlsuffix', 'block_nsse');
+    $nsse_url_suffix_desc = get_string('urlsuffixdesc', 'block_nsse');
+    $nsse_default_suffix = '/60';
+
+    $settings->add(new admin_setting_configtext('block_nsse/urlsuffix',
+        $nsse_url_suffix, $nsse_url_suffix_desc, $nsse_default_suffix));
+}

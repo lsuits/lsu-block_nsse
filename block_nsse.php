@@ -50,13 +50,13 @@ class block_nsse extends block_base {
                      'my' => true);
     }
 
-    /**
-     * Standard moodle function
+     /**
+     * Allows configuration within Moodle.
      *
-     * @return false (do not allow config)
+     * @return true
      */
-    public function instance_allow_config() {
-        return false;
+    function has_config(){
+        return true;
     }
 
     /**
@@ -71,25 +71,22 @@ class block_nsse extends block_base {
      */
     public function get_content() {
         global $USER;
+        // TODO: make this a generic link/user profile tool, not just an NSSE one
+        if (!empty($USER->profile['nsse'])) {
+            $nsse_prefix = get_config('block_nsse', 'urlprefix');
+            $nsse_suffix = get_config('block_nsse', 'urlsuffix');
+            $nsse_link_id = $USER->profile['nsse'];
+            $nsse_link_text = get_string('linktitle', 'block_nsse');
 
-        if (!empty($USER->aim)) {
-            $nssepat = "/^NSSE,/";
-            $nssesub = $USER->aim;
+            $this->content = new stdClass;
+            $this->content->text = '';
+            $this->content->footer = '';
 
-            if (preg_match($nssepat, $nssesub)) {
-                $nsselinkid = preg_replace($nssepat, '', $nssesub);
-                $nsselinktext = get_string('linktitle', 'block_nsse');
+            // Get the NSSE link
+            $nsse_link = '<a href="' . $nsse_prefix . $nsse_link_id . $nsse_suffix . '" target="blank">' . $nsse_link_text . '</a>';
+            $this->content->text = $nsse_link;
 
-                $this->content = new stdClass;
-                $this->content->text = '';
-                $this->content->footer = '';
-
-                // Get the NSSE link
-                $nsselink = '<a href="https://nssesurvey.org/' . $nsselinkid . '/60" target="blank">' . $nsselinktext . '</a>';
-                $this->content->text = $nsselink;
-
-                return $this->content;
-            }
+            return $this->content;
         }
     }
 }

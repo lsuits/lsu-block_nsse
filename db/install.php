@@ -15,17 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details
- *
- * @package    block_nsse
- * @copyright  2018 onwards Robert Russo, Louisiana State University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   block_nsse
+ * @copyright 2018 onwards Robert Russo, Louisiana State University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+global $CFG;
+require_once $CFG->dirroot . '/blocks/nsse/lib.php';
 
-defined('MOODLE_INTERNAL') || die();
+//insert profile field
+function xmldb_block_nsse_install(){
+    nsse::default_profile_field();
+}
 
-$plugin->version   = 2018013100;        // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires  = 2016051900;        // Requires this Moodle version
-$plugin->release = "v1.1";
-$plugin->maturity = MATURITY_STABLE; 
-$plugin->component = 'block_nsse';      // Full name of the plugin (used for diagnostics)
+?>

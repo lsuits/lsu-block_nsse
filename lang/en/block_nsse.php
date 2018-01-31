@@ -24,5 +24,11 @@
 
 $string['pluginname'] = 'NSSE Survey Links';
 $string['linktitle'] = 'Take your NSSE survey';
+$string['profilefield_shortname'] = 'nsse';
+$string['profilefield_longname'] = 'NSSE Survey Link';
+$string['urlsuffix'] = 'URL suffix';
+$string['urlsuffixdesc'] = 'NSSE Survey Link suffix';
+$string['urlprefix'] = 'URL prefix';
+$string['urlprefixdesc'] = 'NSSE Survey Link prefix';
 $string['nsse:addinstance'] = 'Add a new nsse block';
 $string['nsse:myaddinstance'] = 'Add a new nsse block to Dashboard';

@@ -25,17 +25,17 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-    $nsse_url_prefix = get_string('urlprefix', 'block_nsse');
-    $nsse_url_prefix_desc = get_string('urlprefixdesc', 'block_nsse');
-    $nsse_default_prefix = get_string('urlprefixdefault', 'block_nsse');
+    $nsseurlprefix = get_string('urlprefix', 'block_nsse');
+    $nsseurlprefixdesc = get_string('urlprefixdesc', 'block_nsse');
+    $nssedefaultprefix = get_string('urlprefixdefault', 'block_nsse');
 
     $settings->add(new admin_setting_configtext('block_nsse/urlprefix',
-        $nsse_url_prefix, $nsse_url_prefix_desc, $nsse_default_prefix));
+            $nsseurlprefix, $nsseurlprefixdesc, $nssedefaultprefix));
 
-    $nsse_url_suffix = get_string('urlsuffix', 'block_nsse');
-    $nsse_url_suffix_desc = get_string('urlsuffixdesc', 'block_nsse');
-    $nsse_default_suffix = get_string('urlsuffixdefault', 'block_nsse');
+    $nsseurlsuffix = get_string('urlsuffix', 'block_nsse');
+    $nsseurlsuffixdesc = get_string('urlsuffixdesc', 'block_nsse');
+    $nssedefaultsuffix = get_string('urlsuffixdefault', 'block_nsse');
 
     $settings->add(new admin_setting_configtext('block_nsse/urlsuffix',
-        $nsse_url_suffix, $nsse_url_suffix_desc, $nsse_default_suffix));
+            $nsseurlsuffix, $nsseurlsuffixdesc, $nssedefaultsuffix));
 }

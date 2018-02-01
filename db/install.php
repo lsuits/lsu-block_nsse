@@ -19,12 +19,12 @@
  * @copyright 2018 onwards Robert Russo, Louisiana State University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-global $CFG;
-require_once $CFG->dirroot . '/blocks/nsse/lib.php';
 
-//insert profile field
-function xmldb_block_nsse_install(){
+defined('MOODLE_INTERNAL') || die;
+global $CFG;
+require_once($CFG->dirroot . '/blocks/nsse/lib.php');
+
+// Insert profile field.
+function xmldb_block_nsse_install() {
     nsse::default_profile_field();
 }
-
-?>

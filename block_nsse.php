@@ -21,6 +21,9 @@
  * @copyright 2018 onwards Robert Russo, Louisiana State University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die;
+
 class block_nsse extends block_base {
     /**
      * Standard moodle function
@@ -51,11 +54,11 @@ class block_nsse extends block_base {
     }
 
      /**
-     * Allows configuration within Moodle.
-     *
-     * @return true
-     */
-    function has_config(){
+      * Allows configuration within Moodle.
+      *
+      * @return true
+      */
+    public function has_config() {
         return true;
     }
 
@@ -66,27 +69,27 @@ class block_nsse extends block_base {
      * @var string $nssesub data we're searching
      * @var string $nsselinkid modified $nssesub for generating links
      * @var string $nsselinktext lang-specific text used for the generated link
-     * 
+     *
      * @return content for the page
      */
     public function get_content() {
         global $USER;
-        // TODO: make this a generic link/user profile tool, not just an NSSE one
+        // TODO: make this a generic link/user profile tool, not just an NSSE one.
         if (!empty($USER->profile['nsse'])) {
-            $nsse_prefix = get_config('block_nsse', 'urlprefix');
-            $nsse_prefix = !empty($nsse_prefix) ? $nsse_prefix : get_string('urlprefixdefault', 'block_nsse');
-            $nsse_suffix = get_config('block_nsse', 'urlsuffix');
-            $nsse_suffix = !empty($nsse_suffix) ? $nsse_suffix : get_string('urlsuffixdefault', 'block_nsse');
-            $nsse_link_id = $USER->profile['nsse'];
-            $nsse_link_text = get_string('linktitle', 'block_nsse');
+            $nsseprefix = get_config('block_nsse', 'urlprefix');
+            $nsseprefix = !empty($nsseprefix) ? $nsseprefix : get_string('urlprefixdefault', 'block_nsse');
+            $nssesuffix = get_config('block_nsse', 'urlsuffix');
+            $nssesuffix = !empty($nssesuffix) ? $nssesuffix : get_string('urlsuffixdefault', 'block_nsse');
+            $nsselinkid = $USER->profile['nsse'];
+            $nsselinktext = get_string('linktitle', 'block_nsse');
 
             $this->content = new stdClass;
             $this->content->text = '';
             $this->content->footer = '';
 
-            // Get the NSSE link
-            $nsse_link = '<a href="' . $nsse_prefix . $nsse_link_id . $nsse_suffix . '" target="blank">' . $nsse_link_text . '</a>';
-            $this->content->text = $nsse_link;
+            // Get the NSSE link.
+            $nsselink = '<a href="' . $nsseprefix . $nsselinkid . $nssesuffix . '" target="blank">' . $nsselinktext . '</a>';
+            $this->content->text = $nsselink;
 
             return $this->content;
         }
